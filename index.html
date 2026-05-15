@@ -630,6 +630,62 @@
       margin: 24px 0;
     }
 
+    /* ── ANIMATIONS SCROLL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ── PARTAGE ── */
+    .partage {
+      background: var(--brun-dark);
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .partage .section-label { color: var(--or); }
+    .partage h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 3.5vw, 38px);
+      color: var(--blanc);
+      margin-bottom: 16px;
+    }
+    .partage p {
+      color: rgba(255,255,255,0.65);
+      font-size: 17px;
+      max-width: 520px;
+      margin: 0 auto 40px;
+    }
+    .share-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 4px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      letter-spacing: 0.3px;
+    }
+    .share-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+    .share-wa  { background: #25D366; color: #fff; }
+    .share-mail{ background: var(--or); color: var(--brun-dark); }
+    .share-fb  { background: #1877F2; color: #fff; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav { padding: 14px 20px; }
@@ -639,6 +695,7 @@
       .rdv-card, .quote-block { padding: 40px 28px; }
       section { padding: 72px 20px; }
       .quote-mark { font-size: 80px; }
+      .share-buttons { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
@@ -667,7 +724,7 @@
   <!-- CONCEPT -->
   <section class="concept" id="concept">
     <div class="container">
-      <div class="concept-grid">
+      <div class="concept-grid reveal">
         <div class="concept-text">
           <span class="section-label">Le projet</span>
           <h2 class="section-title">Chaque vie est une histoire unique</h2>
@@ -694,12 +751,12 @@
       <h2 class="section-title">Deux façons de vivre l'expérience</h2>
       <p class="section-sub">Que vous souhaitiez raconter votre propre histoire ou préserver celle d'un proche, Tracemémoire est là pour vous.</p>
       <div class="cards-grid">
-        <div class="card">
+        <div class="card reveal reveal-delay-1">
           <span class="card-icon">🌿</span>
           <h3>Pour vous, seniors</h3>
           <p>Vous avez vécu des décennies riches en expériences. Ensemble, nous mettons en mots vos souvenirs, vos valeurs et les moments qui ont façonné votre vie — pour laisser une trace durable à ceux que vous aimez.</p>
         </div>
-        <div class="card">
+        <div class="card reveal reveal-delay-2">
           <span class="card-icon">💛</span>
           <h3>Pour vos proches</h3>
           <p>Vous souhaitez préserver l'histoire de vos parents ou grands-parents avant qu'elle ne disparaisse ? Offrez-leur ce cadeau inestimable : un livre qui capture leur vie, leurs anecdotes, leur essence.</p>
@@ -715,17 +772,17 @@
       <h2 class="section-title">Simple, guidé, et à votre rythme</h2>
       <p class="section-sub">Un processus en trois étapes conçu pour être accessible à tous, sans stress.</p>
       <div class="steps">
-        <div class="step">
+        <div class="step reveal reveal-delay-1">
           <div class="step-num">1</div>
           <h3>Le questionnaire découverte</h3>
           <p>Répondez à quelques questions simples et émotionnelles sur votre vie. En quelques minutes, vous recevez un aperçu personnalisé gratuit.</p>
         </div>
-        <div class="step">
+        <div class="step reveal reveal-delay-2">
           <div class="step-num">2</div>
           <h3>L'échange personnalisé</h3>
           <p>Un rendez-vous gratuit pour comprendre votre histoire, vos envies, et vous présenter les possibilités d'un livre souvenir complet.</p>
         </div>
-        <div class="step">
+        <div class="step reveal reveal-delay-3">
           <div class="step-num">3</div>
           <h3>Votre livre souvenir</h3>
           <p>Nous créons ensemble votre livre personnalisé — imprimé, numérique ou les deux. Un héritage que vos proches garderont précieusement.</p>
@@ -737,7 +794,7 @@
   <!-- LIVRE -->
   <section class="livre" id="livre">
     <div class="container">
-      <div class="livre-grid">
+      <div class="livre-grid reveal">
         <div class="livre-text">
           <span class="section-label">Le livre souvenir</span>
           <h2 class="section-title">Un objet précieux, conçu sur mesure</h2>
@@ -818,6 +875,32 @@
     </div>
   </section>
 
+  <!-- PARTAGE -->
+  <section class="partage">
+    <div class="container reveal">
+      <span class="section-label">✦ Offrir ce cadeau</span>
+      <h2>Partagez Tracemémoire avec quelqu'un que vous aimez</h2>
+      <p>Vous pensez à un proche dont l'histoire mérite d'être préservée ? Partagez ce projet avec votre famille.</p>
+      <div class="share-buttons">
+        <a class="share-btn share-wa"
+           href="https://wa.me/?text=J'ai%20d%C3%A9couvert%20Tracem%C3%A9moire%20%E2%80%94%20un%20projet%20pour%20transformer%20vos%20souvenirs%20en%20livre.%20%C3%87a%20pourrait%20vous%20toucher%20%3A%20https%3A%2F%2Fgrisonipierrejean-cloud.github.io%2Ftracememoire-site%2F"
+           target="_blank" rel="noopener">
+          📱 Partager sur WhatsApp
+        </a>
+        <a class="share-btn share-mail"
+           href="mailto:?subject=Un%20projet%20qui%20m'a%20touch%C3%A9%20%E2%80%94%20Tracem%C3%A9moire&body=Bonjour%2C%0A%0AJ'ai%20d%C3%A9couvert%20Tracem%C3%A9moire%2C%20un%20projet%20pour%20transformer%20vos%20souvenirs%20de%20vie%20en%20un%20livre%20souvenir%20personnalis%C3%A9.%0A%0AJe%20pense%20%C3%A0%20toi%20en%20voyant%20%C3%A7a.%20D%C3%A9couvre%20le%20projet%20ici%20%3A%20https%3A%2F%2Fgrisonipierrejean-cloud.github.io%2Ftracememoire-site%2F"
+           target="_blank" rel="noopener">
+          ✉️ Envoyer par email
+        </a>
+        <a class="share-btn share-fb"
+           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgrisonipierrejean-cloud.github.io%2Ftracememoire-site%2F"
+           target="_blank" rel="noopener">
+          📘 Partager sur Facebook
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <a href="#" class="logo">Trace<span style="color:var(--or-light)">mémoire</span></a>
@@ -829,5 +912,30 @@
     <p style="margin-top: 32px; font-size: 13px;">© 2026 Tracemémoire — Tous droits réservés</p>
   </footer>
 
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Partage natif si disponible
+    const nativeShare = document.getElementById('native-share');
+    if (nativeShare && navigator.share) {
+      nativeShare.style.display = 'inline-flex';
+      nativeShare.addEventListener('click', () => {
+        navigator.share({
+          title: 'Tracemémoire — Votre histoire mérite d\'être transmise',
+          text: 'Transformez vos souvenirs en un livre souvenir personnalisé.',
+          url: 'https://grisonipierrejean-cloud.github.io/tracememoire-site/'
+        });
+      });
+    }
+  </script>
 </body>
 </html>
